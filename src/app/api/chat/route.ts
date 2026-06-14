@@ -2,8 +2,6 @@ import Groq from "groq-sdk";
 import { packages, categoryLabels } from "@/data/packages";
 import { faq } from "@/data/faq";
 
-const client = new Groq();
-
 const catalogSummary = packages
   .map(
     (p) =>
@@ -53,6 +51,7 @@ export async function POST(request: Request) {
       return Response.json({ error: "Mensagens inválidas" }, { status: 400 });
     }
 
+    const client = new Groq();
     const response = await client.chat.completions.create({
       model: "llama-3.1-8b-instant",
       max_tokens: 400,
