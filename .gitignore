@@ -35,7 +35,6 @@ yarn-error.log*
 
 # large video files (usar CDN em produção)
 *.mov
-*.mp4
 
 # development artifacts
 .visual/
