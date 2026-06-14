@@ -1,9 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  turbopack: {
-    root: "C:/Users/junio/Projects/Carmel Tour/site",
-  },
   images: {
     remotePatterns: [
       {
@@ -16,7 +13,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  allowedDevOrigins: ["192.168.0.91"],
 };
 
 export default nextConfig;
