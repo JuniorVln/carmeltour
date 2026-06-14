@@ -14,6 +14,59 @@ const INITIAL_MESSAGE: Message = {
     "Olá! Sou o assistente da Carmel Tour. 😊 Posso ajudar com informações sobre nossos roteiros bíblicos para Israel, Turquia, Grécia e muito mais. O que você gostaria de saber?",
 };
 
+function renderInline(text: string) {
+  const parts = text.split(/\*\*(.*?)\*\*/g);
+  return parts.map((part, i) =>
+    i % 2 === 1 ? (
+      <strong key={i} className="font-semibold">
+        {part}
+      </strong>
+    ) : (
+      part
+    )
+  );
+}
+
+function renderMarkdown(text: string) {
+  const lines = text.split("\n");
+  const nodes: React.ReactNode[] = [];
+  let bullets: React.ReactNode[] = [];
+
+  function flushBullets() {
+    if (bullets.length === 0) return;
+    nodes.push(
+      <ul key={`ul-${nodes.length}`} className="mt-1.5 space-y-1">
+        {bullets}
+      </ul>
+    );
+    bullets = [];
+  }
+
+  lines.forEach((line, i) => {
+    const trimmed = line.trim();
+    if (trimmed.startsWith("- ") || trimmed.startsWith("• ")) {
+      bullets.push(
+        <li key={i} className="flex gap-2 items-start">
+          <span className="text-amber shrink-0 mt-px">•</span>
+          <span>{renderInline(trimmed.slice(2))}</span>
+        </li>
+      );
+    } else if (trimmed === "") {
+      flushBullets();
+    } else {
+      flushBullets();
+      nodes.push(
+        <p key={i} className={nodes.length > 0 ? "mt-2" : ""}>
+          {renderInline(trimmed)}
+        </p>
+      );
+    }
+  });
+
+  flushBullets();
+  return nodes;
+}
+
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([INITIAL_MESSAGE]);
@@ -77,7 +130,7 @@ export default function ChatWidget() {
   function handleKey(e: React.KeyboardEvent) {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
-      sendMessage();  // sem argumento → usa `input` state normalmente
+      sendMessage();
     }
   }
 
@@ -116,13 +169,15 @@ export default function ChatWidget() {
                 }`}
               >
                 <div
-                  className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+                  className={`max-w-[82%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
                     msg.role === "user"
                       ? "bg-amber text-white rounded-br-sm"
                       : "bg-white text-dark border border-dark/10 rounded-bl-sm"
                   }`}
                 >
-                  {msg.content}
+                  {msg.role === "assistant"
+                    ? renderMarkdown(msg.content)
+                    : msg.content}
                 </div>
               </div>
             ))}

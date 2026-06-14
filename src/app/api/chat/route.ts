@@ -41,7 +41,13 @@ ${faqSummary}
 - Seja conciso e direto — respostas curtas são melhores
 - Se não souber algo específico, direcione para o WhatsApp
 - Não invente informações que não estão no catálogo
-- Limite cada resposta a 200 palavras no máximo`;
+- Limite cada resposta a 200 palavras no máximo
+
+## Formatação
+- Use **negrito** para destacar nomes de roteiros e informações importantes
+- Use listas com "- " para enumerar destinos, itens inclusos ou opções
+- Separe parágrafos com uma linha em branco
+- Não use títulos com # — apenas texto, negrito e listas`;
 
 export async function POST(request: Request) {
   try {
