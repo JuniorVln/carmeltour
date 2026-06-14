@@ -33,6 +33,13 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# large video files (usar CDN em produção)
+*.mov
+*.mp4
+
+# development artifacts
+.visual/
+
 # vercel
 .vercel
 

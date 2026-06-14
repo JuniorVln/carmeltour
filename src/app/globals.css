@@ -1,26 +1,97 @@
 @import "tailwindcss";
 
+@theme {
+  --color-amber: #B88A3B;
+  --color-amber-light: #D2AD68;
+  --color-amber-dark: #8B6428;
+
+  --color-navy: #142F3D;
+  --color-navy-light: #204657;
+  --color-navy-dark: #0A1C25;
+
+  --color-brown: #24170F;
+  --color-brown-light: #38261A;
+
+  --color-cream: #F6F2EA;
+  --color-cream-dark: #E8E0D4;
+
+  --color-dark: #1E1A16;
+  --color-white: #FFFFFF;
+
+  --font-heading: var(--font-cormorant);
+  --font-body: var(--font-manrope);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F6F2EA;
+  --foreground: #1E1A16;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-manrope), Arial, sans-serif;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+::selection {
+  background: #B88A3B;
+  color: #FFFFFF;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.eyebrow {
+  color: #B88A3B;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(2.4rem, 5vw, 4.35rem);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+.lux-button {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.85rem 1.65rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+
+.fine-line {
+  height: 1px;
+  background: currentColor;
+  opacity: 0.22;
 }
