@@ -53,7 +53,7 @@ export default function Pillars() {
               />
             </div>
             <div className="absolute -bottom-7 right-0 sm:-right-7 bg-navy text-white w-40 h-36 flex flex-col justify-center px-7">
-              <span className="font-heading text-5xl leading-none text-amber-light">20+</span>
+              <span className="font-heading text-7xl leading-none text-amber-light">20+</span>
               <span className="mt-2 text-[9px] uppercase tracking-[0.2em] text-white/65">
                 anos criando jornadas
               </span>
