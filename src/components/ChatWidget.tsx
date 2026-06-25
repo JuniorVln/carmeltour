@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Loader2 } from "lucide-react";
+import { Bot, X, Send, Loader2 } from "lucide-react";
 
 interface Message {
   role: "user" | "assistant";
@@ -241,9 +241,9 @@ export default function ChatWidget() {
         className="fixed bottom-6 right-4 sm:right-6 z-50 flex items-center gap-2 bg-amber hover:bg-amber-dark text-white font-bold uppercase tracking-[0.1em] px-5 py-3.5 rounded-full shadow-lg shadow-black/15 transition-all hover:scale-105 active:scale-95"
         aria-label="Abrir assistente"
       >
-        {open ? <X size={18} /> : <MessageCircle size={18} />}
+        {open ? <X size={18} /> : <Bot size={18} />}
         {!open && (
-          <span className="text-[10px] hidden sm:inline">Atendimento</span>
+          <span className="text-[10px] hidden sm:inline">Assistente</span>
         )}
       </button>
     </>

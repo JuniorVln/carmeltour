@@ -54,4 +54,24 @@ export const faq: FaqItem[] = [
     answer:
       "O Carmel Educação não é uma viagem com guia — é aprendizado em campo. Professores, teólogos e arqueólogos conduzem estudos aprofundados nos próprios locais bíblicos. Ideal para pastores que desejam um crescimento intelectual e espiritual profundo.",
   },
+  {
+    question: "Qual é a melhor época para viajar a Israel?",
+    answer:
+      "Israel tem verões quentes e secos (abril a outubro) e invernos amenos (novembro a março). As estações mais agradáveis costumam ser a primavera e o outono. Em Jerusalém, as noites podem ser mais frias — um agasalho leve resolve. Organizamos caravanas durante todo o ano.",
+  },
+  {
+    question: "Com quanta antecedência devo reservar?",
+    answer:
+      "Recomendamos reservar com pelo menos 3 a 6 meses de antecedência, principalmente para garantir as melhores tarifas aéreas e a disponibilidade de hotéis. Para grupos e caravanas de igrejas, quanto antes começarmos o planejamento, melhor.",
+  },
+  {
+    question: "Preciso de preparo físico para a viagem?",
+    answer:
+      "As caravanas envolvem caminhadas frequentes e alguns trajetos com escadas e subidas. Não é preciso preparo atlético, mas recomendamos calçado confortável e disposição para caminhar. Roteiros com a subida ao Monte Sinai exigem mais fôlego — orientamos cada grupo com antecedência.",
+  },
+  {
+    question: "Posso participar mesmo sem fazer parte de um grupo ou igreja?",
+    answer:
+      "Sim. Embora a maioria das nossas viagens seja organizada com igrejas e líderes, também recebemos viajantes individuais e casais em caravanas abertas. Fale com nossa equipe que indicamos a saída ideal para o seu perfil.",
+  },
 ];

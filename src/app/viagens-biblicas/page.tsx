@@ -3,6 +3,7 @@ import { getPackagesByCategory } from "@/data/packages";
 import PackageCard from "@/components/ui/PackageCard";
 import Link from "next/link";
 import InternalHero from "@/components/layout/InternalHero";
+import FaqAccordion from "@/components/sections/FaqAccordion";
 
 export const metadata: Metadata = {
   title: "Viagens Bíblicas",
@@ -79,6 +80,8 @@ export default function ViagensBiblicasPage() {
           </div>
         </div>
       </div>
+
+      <FaqAccordion background="cream" />
     </div>
   );
 }

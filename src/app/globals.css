@@ -90,6 +90,13 @@ a {
   transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
 }
 
+/* Slightly smaller variant — used in the hero per client feedback */
+.lux-button--sm {
+  min-height: 44px;
+  padding: 0.7rem 1.4rem;
+  font-size: 0.68rem;
+}
+
 .fine-line {
   height: 1px;
   background: currentColor;

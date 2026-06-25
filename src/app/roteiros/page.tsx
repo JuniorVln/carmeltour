@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { packages, categoryLabels, type PackageCategory } from "@/data/packages";
+import {
+  categoryLabels,
+  getActiveCategories,
+  getPackagesByCategory,
+} from "@/data/packages";
 import PackageCard from "@/components/ui/PackageCard";
 import InternalHero from "@/components/layout/InternalHero";
+import FaqAccordion from "@/components/sections/FaqAccordion";
 
 export const metadata: Metadata = {
   title: "Todos os Roteiros",
@@ -10,24 +14,9 @@ export const metadata: Metadata = {
     "Explore nossos roteiros bíblicos premium para Israel, Turquia, Grécia, Egito e muito mais.",
 };
 
-const categories: { value: PackageCategory | "todos"; label: string }[] = [
-  { value: "todos", label: "Todos" },
-  { value: "viagens-biblicas", label: "Viagens Bíblicas" },
-  { value: "7-igrejas", label: "Coleção 7 Igrejas" },
-  { value: "educacao", label: "Carmel Educação" },
-  { value: "casais", label: "Carmel Casais" },
-];
+export default function RoteirosPage() {
+  const activeCategories = getActiveCategories();
 
-export default function RoteirosPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ categoria?: string }>;
-}) {
-  // Sync access — searchParams is resolved by Next.js 16 before render
-  return <RoteirosContent />;
-}
-
-function RoteirosContent() {
   return (
     <div>
       <InternalHero
@@ -41,9 +30,8 @@ function RoteirosContent() {
       {/* Content */}
       <div className="bg-cream min-h-screen py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Category sections */}
-          {(["viagens-biblicas", "7-igrejas", "educacao", "casais"] as PackageCategory[]).map((cat) => {
-            const catPackages = packages.filter((p) => p.category === cat);
+          {activeCategories.map((cat) => {
+            const catPackages = getPackagesByCategory(cat);
             return (
               <div key={cat} className="mb-16">
                 <div className="flex items-center justify-between mb-6">
@@ -64,6 +52,8 @@ function RoteirosContent() {
           })}
         </div>
       </div>
+
+      <FaqAccordion />
     </div>
   );
 }

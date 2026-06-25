@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getPackagesByCategory } from "@/data/packages";
 import PackageCard from "@/components/ui/PackageCard";
 import InternalHero from "@/components/layout/InternalHero";
+import FaqAccordion from "@/components/sections/FaqAccordion";
 
 export const metadata: Metadata = {
   title: "Carmel Educação",
@@ -63,17 +64,21 @@ export default function CarmelEducacaoPage() {
       {/* Programs */}
       <div className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-heading font-bold text-dark mb-2">
-            Programas Disponíveis
-          </h2>
-          <p className="text-dark/60 mb-8">
-            Cada programa é desenvolvido com rigor acadêmico e imersão espiritual
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {pkgs.map((pkg) => (
-              <PackageCard key={pkg.slug} pkg={pkg} />
-            ))}
-          </div>
+          {pkgs.length > 0 && (
+            <>
+              <h2 className="text-2xl font-heading font-bold text-dark mb-2">
+                Programas Disponíveis
+              </h2>
+              <p className="text-dark/60 mb-8">
+                Cada programa é desenvolvido com rigor acadêmico e imersão espiritual
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {pkgs.map((pkg) => (
+                  <PackageCard key={pkg.slug} pkg={pkg} />
+                ))}
+              </div>
+            </>
+          )}
 
           <div className="mt-10 p-8 bg-navy rounded-2xl text-center">
             <p className="text-white/80 text-lg mb-4">
@@ -92,6 +97,8 @@ export default function CarmelEducacaoPage() {
           </div>
         </div>
       </div>
+
+      <FaqAccordion background="cream" />
     </div>
   );
 }

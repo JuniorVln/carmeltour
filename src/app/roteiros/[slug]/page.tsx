@@ -4,6 +4,7 @@ import Link from "next/link";
 import {
   Clock,
   MapPin,
+  CalendarDays,
   CheckCircle,
   XCircle,
   Download,
@@ -17,6 +18,7 @@ import {
 } from "@/data/packages";
 import PackageCard from "@/components/ui/PackageCard";
 import InternalHero from "@/components/layout/InternalHero";
+import FaqAccordion from "@/components/sections/FaqAccordion";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -75,6 +77,10 @@ export default async function RoteiroPagina({ params }: Props) {
             <span className="flex items-center gap-1.5">
               <MapPin size={14} /> {pkg.destinations.join(" · ")}
             </span>
+            <span className="flex items-center gap-1.5">
+              <CalendarDays size={14} />{" "}
+              {pkg.dateLabel ?? "Próximas saídas sob consulta"}
+            </span>
           </div>
       </InternalHero>
 
@@ -111,6 +117,27 @@ export default async function RoteiroPagina({ params }: Props) {
                   ))}
                 </ul>
               </section>
+
+              {/* Itinerary */}
+              {pkg.itinerary.length > 0 && (
+                <section>
+                  <h2 className="text-2xl font-heading font-bold text-dark mb-4">
+                    Roteiro
+                  </h2>
+                  <ol className="space-y-4">
+                    {pkg.itinerary.map((day) => (
+                      <li key={day.dia} className="flex gap-4">
+                        <span className="shrink-0 w-20 text-xs font-bold uppercase tracking-[0.08em] text-amber-dark pt-0.5">
+                          {day.dia}
+                        </span>
+                        <span className="text-sm text-dark/70 leading-relaxed border-l border-cream-dark pl-4">
+                          {day.descricao}
+                        </span>
+                      </li>
+                    ))}
+                  </ol>
+                </section>
+              )}
 
               {/* Includes / Not Includes */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -156,6 +183,20 @@ export default async function RoteiroPagina({ params }: Props) {
             <div className="space-y-5">
               {/* Price / CTA card */}
               <div className="bg-white rounded-2xl p-6 border border-cream-dark shadow-sm sticky top-28">
+                <div className="mb-4 pb-4 border-b border-cream-dark">
+                  <div className="text-xs text-dark/40 uppercase tracking-wider mb-1">
+                    Saída
+                  </div>
+                  <div className="flex items-center gap-1.5 text-sm font-semibold text-dark">
+                    <CalendarDays size={15} className="text-amber" />
+                    {pkg.dateLabel ?? "Próximas saídas sob consulta"}
+                  </div>
+                  {pkg.leader && (
+                    <div className="text-xs text-dark/50 mt-1">
+                      Liderança: {pkg.leader}
+                    </div>
+                  )}
+                </div>
                 <div className="mb-4">
                   <div className="text-xs text-dark/40 uppercase tracking-wider mb-1">
                     Valor
@@ -215,6 +256,8 @@ export default async function RoteiroPagina({ params }: Props) {
           )}
         </div>
       </div>
+
+      <FaqAccordion />
     </div>
   );
 }

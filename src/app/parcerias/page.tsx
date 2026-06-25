@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import InternalHero from "@/components/layout/InternalHero";
+import FaqAccordion from "@/components/sections/FaqAccordion";
 
 export const metadata: Metadata = {
   title: "Parcerias",
@@ -29,8 +30,8 @@ const beneficios = [
     desc: "Possibilidade de exclusividade para parcerias em determinadas regiões.",
   },
   {
-    title: "Viagem Famuliars",
-    desc: "Oportunidade de familiarização (FAM trip) para conhecer os destinos em primeira mão.",
+    title: "Viagens de Familiarização",
+    desc: "Oportunidade de conhecer os destinos em primeira mão por meio de uma FAM trip.",
   },
 ];
 
@@ -38,7 +39,7 @@ export default function ParceriasPage() {
   return (
     <div>
       <InternalHero
-        eyebrow="Crescemos juntos"
+        eyebrow="Vamos crescer juntos"
         title={<>Parcerias<br />Carmel Tour</>}
         description="Para pastores, líderes e agências que desejam oferecer experiências bíblicas premium para suas congregações e clientes."
         image="/images/heroes/internal-partnerships.png"
@@ -119,6 +120,8 @@ export default function ParceriasPage() {
           </div>
         </div>
       </div>
+
+      <FaqAccordion />
     </div>
   );
 }

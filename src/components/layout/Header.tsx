@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, MessageCircle, ChevronDown } from "lucide-react";
 
 const navItems = [
   {
@@ -18,6 +18,7 @@ const navItems = [
     ],
   },
   { label: "Sobre", href: "/sobre" },
+  { label: "Dicas", href: "/dicas" },
   { label: "FAQ", href: "/faq" },
   { label: "Contato", href: "/contato" },
 ];
@@ -53,9 +54,9 @@ export default function Header() {
             <Image
               src="/logo-branca.png"
               alt="Carmel Tour"
-              width={180}
-              height={54}
-              className="h-[46px] w-auto"
+              width={272}
+              height={82}
+              className="h-[72px] w-auto"
               style={{ width: "auto" }}
               priority
             />
@@ -160,7 +161,7 @@ export default function Header() {
             rel="noopener noreferrer"
             className="hidden lg:flex items-center gap-2 border border-amber bg-amber hover:bg-amber-dark hover:border-amber-dark text-white text-[11px] font-bold uppercase tracking-[0.12em] px-6 py-3 rounded-full transition-colors"
           >
-            <Phone size={15} />
+            <MessageCircle size={15} />
             Atendimento
           </a>
 
@@ -220,7 +221,7 @@ export default function Header() {
               rel="noopener noreferrer"
               className="mt-4 flex items-center justify-center gap-2 bg-amber text-white font-semibold px-5 py-3 rounded-full"
             >
-              <Phone size={15} />
+              <MessageCircle size={15} />
               Fale pelo WhatsApp
             </a>
           </nav>

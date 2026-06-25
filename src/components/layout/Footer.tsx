@@ -12,6 +12,7 @@ const footerNav = {
   ],
   Empresa: [
     { label: "Sobre Nós", href: "/sobre" },
+    { label: "Dicas de Viagem", href: "/dicas" },
     { label: "FAQ", href: "/faq" },
     { label: "Parcerias", href: "/parcerias" },
     { label: "Contato", href: "/contato" },
@@ -27,9 +28,9 @@ export default function Footer() {
             <Image
               src="/logo-branca.png"
               alt="Carmel Tour"
-              width={160}
-              height={48}
-              className="h-12 w-auto"
+              width={200}
+              height={60}
+              className="h-14 w-auto"
               style={{ width: "auto" }}
             />
             <p className="mt-6 text-sm text-white/48 leading-7 max-w-sm">

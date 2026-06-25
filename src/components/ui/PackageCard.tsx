@@ -1,21 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, Clock, MapPin } from "lucide-react";
+import { ArrowUpRight, Clock, MapPin, CalendarDays } from "lucide-react";
 import type { Package } from "@/data/packages";
 import { categoryLabels } from "@/data/packages";
 
 interface Props {
   pkg: Package;
 }
-
-const packageImages: Record<string, string> = {
-  "israel-classico": "/images/card-israel.jpg",
-  "israel-egito": "/images/card-egypt.jpg",
-  "turquia-biblica": "/images/card-turkey.jpg",
-  "turquia-ilhas-gregas": "/images/card-greece.jpg",
-  "7-igrejas-costa-amalfitana": "/images/card-amalfi.jpg",
-  "educacao-sete-igrejas-profundidade": "/images/card-ephesus.jpg",
-};
 
 const categoryFallbacks: Record<string, string> = {
   "viagens-biblicas":
@@ -29,7 +20,8 @@ const categoryFallbacks: Record<string, string> = {
 };
 
 export default function PackageCard({ pkg }: Props) {
-  const imgSrc = packageImages[pkg.slug] ?? categoryFallbacks[pkg.category];
+  const imgSrc = pkg.heroImage || categoryFallbacks[pkg.category];
+  const dateText = pkg.dateLabel ?? "Próximas saídas sob consulta";
   return (
     <Link
       href={`/roteiros/${pkg.slug}`}
@@ -55,8 +47,8 @@ export default function PackageCard({ pkg }: Props) {
       </div>
 
       <div className="flex flex-col flex-1 p-6">
-        <div className="flex items-start justify-between gap-4">
-          <h3 className="font-heading text-[1.8rem] font-medium text-dark leading-none">
+        <div className="flex items-start justify-between gap-4 min-h-[3.4rem]">
+          <h3 className="font-heading text-[1.8rem] font-medium text-dark leading-none transition-colors group-hover:text-amber-dark">
           {pkg.title}
           </h3>
           <ArrowUpRight
@@ -68,13 +60,16 @@ export default function PackageCard({ pkg }: Props) {
           {pkg.subtitle}
         </p>
 
-        <div className="flex flex-wrap gap-4 text-[11px] text-dark/45 mb-5">
+        <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-[11px] text-dark/45 mb-3">
           <span className="flex items-center gap-1">
             <Clock size={11} /> {pkg.duration}
           </span>
           <span className="flex items-center gap-1">
             <MapPin size={11} /> {pkg.destinations.join(", ")}
           </span>
+        </div>
+        <div className="mb-5 flex items-center gap-1 text-[11px] font-semibold text-amber-dark">
+          <CalendarDays size={11} /> {dateText}
         </div>
 
         <p className="text-sm text-dark/55 leading-6 line-clamp-3 flex-1">

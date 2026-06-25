@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { testimonials } from "@/data/testimonials";
 import { Quote } from "lucide-react";
 import InternalHero from "@/components/layout/InternalHero";
+import FaqAccordion from "@/components/sections/FaqAccordion";
 
 export const metadata: Metadata = {
   title: "Sobre Nós",
@@ -132,6 +133,8 @@ export default function SobrePage() {
           </div>
         </div>
       </div>
+
+      <FaqAccordion background="cream" />
     </div>
   );
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getPackagesByCategory } from "@/data/packages";
 import PackageCard from "@/components/ui/PackageCard";
 import InternalHero from "@/components/layout/InternalHero";
+import FaqAccordion from "@/components/sections/FaqAccordion";
 
 export const metadata: Metadata = {
   title: "Carmel Casais",
@@ -54,6 +55,8 @@ export default function CarmelCasaisPage() {
           </div>
         </div>
       </div>
+
+      <FaqAccordion background="cream" />
     </div>
   );
 }
